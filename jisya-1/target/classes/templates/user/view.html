@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+<head
+  th:replace="common/head :: head_fragment(title = 'ユーザー情報詳細', scripts = ~{::script}, links = ~{::link})"></head>
+<body>
+  <div class="container">
+    <h1>ユーザー情報詳細</h1>
+    <div th:object="${userData}">
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">导游编号</div>
+        <div class="col pt-3 border">
+          <p th:text="*{GUIDE_ID}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">导游名称</div>
+        <div class="col pt-3 border">
+          <p th:text="*{GUIDE_NAME}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">车编号</div>
+        <div class="col pt-3 border">
+          <p th:text="*{CAR_NUM}"></p>
+        </div>
+        <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">车名称</div>
+        <div class="col pt-3 border">
+          <p th:text="*{CAR_NAME}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">出发检测点</div>
+        <div class="col pt-3 border">
+          <p th:text="*{START_PLACE}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">点呼类型</div>
+        <div class="col pt-3 border">
+          <p th:text="*{CHECK_TYPE}"></p>
+        </div>
+        <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">疲劳驾驶</div>
+        <div class="col pt-3 border">
+          <p th:text="*{ENOUGH_SLEEP}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">出发检测</div>
+        <div class="col pt-3 border">
+          <p th:text="*{DEPARTURE_DETECTOR}"></p>
+        </div>
+      </div>
+      <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">出发确认人</div>
+        <div class="col pt-3 border">
+          <p th:text="*{DEPARTURE_CHECKNAME}"></p>
+        </div>
+        <div class="row mx-md-n5">
+        <div class="col-2 pt-3 border bg-light">结束地址</div>
+        <div class="col pt-3 border">
+          <p th:text="*{END_PLACE}"></p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div class="text-center">
+      <a th:href="@{/user/{id}/edit(id=*{id})}" class="btn btn-primary">　編集　</a>
+      <a th:href="@{/user/{id}/delete(id=*{id})}" class="btn btn-primary">　削除　</a>
+      <a href="/user/list" class="btn btn-secondary">一覧に戻る</a>
+    </div>
+  </div>
+</body>
+</html>

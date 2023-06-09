@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+	<delete id="delete">
+		DELETE FROM kanri WHERE id = #{id}
+	</delete>
+
+	<insert id="save">
+		INSERT INTO kanri
+		(GUIDE_ID,GUIDE_NAME,CAR_NUM,CAR_NAME,START_PLACE,CHECK_TYPE,ENOUGH_SLEEP,DEPARTURE_DETECTOR,DEPARTURE_CHECKNAME,END_PLACE)
+		VALUES
+		(#{GUIDE_ID}, #{GUIDE_NAME}, #{CAR_NUM},#{CAR_NAME},#{START_PLACE},#{CHECK_TYPE},#{ENOUGH_SLEEP},#{DEPARTURE_DETECTOR},#{DEPARTURE_CHECKNAME},#{END_PLACE} )
+	</insert>
+	
+	
+	<resultMap id="searchMap"
+	type="com.example.entity.User">
+	<result column="GUIDE_ID" jdbcType="VARCHAR" property="GUIDE_ID" />
+		<result column="GUIDE_NAME" jdbcType="VARCHAR" property="GUIDE_NAME" />
+		<result column="CAR_NUM" jdbcType="VARCHAR" property="CAR_NUM" />
+		<result column="CAR_NAME" jdbcType="VARCHAR" property="CAR_NAME" />
+		<result column="START_PLACE" jdbcType="VARCHAR" property="START_PLACE" />
+		<result column="CHECK_TYPE" jdbcType="VARCHAR" property="CHECK_TYPE" />
+		<result column="ENOUGH_SLEEP" jdbcType="BOOLEAN" property="ENOUGH_SLEEP" />
+		<result column="DEPARTURE_DETECTOR" jdbcType="VARCHAR" property="DEPARTURE_DETECTOR" />
+		<result column="DEPARTURE_CHECKNAME" jdbcType="VARCHAR" property="DEPARTURE_CHECKNAME" />
+		<result column="END_PLACE" jdbcType="VARCHAR" property="END_PLACE" />
+	</resultMap>
+	<select id="findById" resultMap="searchMap">
+        SELECT * FROM kanri WHERE id=#{id}
+    </select>
+    <resultMap id="syosaiMap"
+	type="com.example.entity.User">
+	<result column="GUIDE_ID" jdbcType="VARCHAR" property="GUIDE_ID" />
+		<result column="GUIDE_NAME" jdbcType="VARCHAR" property="GUIDE_NAME" />
+		<result column="CAR_NUM" jdbcType="VARCHAR" property="CAR_NUM" />
+		<result column="CAR_NAME" jdbcType="VARCHAR" property="CAR_NAME" />
+		<result column="START_PLACE" jdbcType="VARCHAR" property="START_PLACE" />
+		<result column="CHECK_TYPE" jdbcType="VARCHAR" property="CHECK_TYPE" />
+		<result column="ENOUGH_SLEEP" jdbcType="BOOLEAN" property="ENOUGH_SLEEP" />
+		<result column="DEPARTURE_DETECTOR" jdbcType="VARCHAR" property="DEPARTURE_DETECTOR" />
+		<result column="DEPARTURE_CHECKNAME" jdbcType="VARCHAR" property="DEPARTURE_CHECKNAME" />
+		<result column="END_PLACE" jdbcType="VARCHAR" property="END_PLACE" />
+	</resultMap>
+    <select id="search" resultMap="syosaiMap">
+        SELECT * FROM kanri WHERE id = #{id}
+    </select>
+    
+    <update id="update">
+        UPDATE kanri SET GUIDE_ID = #{GUIDE_ID}, GUIDE_NAME = #{GUIDE_NAME}, CAR_NUM = #{CAR_NUM}, CAR_NAME = #{CAR_NAME},START_PLACE = #{START_PLACE},CHECK_TYPE = #{CHECK_TYPE},ENOUGH_SLEEP = #{ENOUGH_SLEEP},DEPARTURE_DETECTOR = #{DEPARTURE_DETECTOR},DEPARTURE_CHECKNAME = #{DEPARTURE_CHECKNAME},END_PLACE = #{END_PLACE} 
+         WHERE id = #{id}
+    </update>
+    
+	<resultMap id="UserMap"
+		type="com.example.entity.User">
+		<result column="id" jdbcType="INTEGER" property="id" />
+		<result column="GUIDE_ID" jdbcType="VARCHAR" property="GUIDE_ID" />
+		<result column="GUIDE_NAME" jdbcType="VARCHAR" property="GUIDE_NAME" />
+		<result column="CAR_NUM" jdbcType="VARCHAR" property="CAR_NUM" />
+		<result column="CAR_NAME" jdbcType="VARCHAR" property="CAR_NAME" />
+		<result column="START_PLACE" jdbcType="VARCHAR" property="START_PLACE" />
+		<result column="CHECK_TYPE" jdbcType="VARCHAR" property="CHECK_TYPE" />
+		<result column="ENOUGH_SLEEP" jdbcType="BOOLEAN" property="ENOUGH_SLEEP" />
+		<result column="DEPARTURE_DETECTOR" jdbcType="VARCHAR" property="DEPARTURE_DETECTOR" />
+		<result column="DEPARTURE_CHECKNAME" jdbcType="VARCHAR" property="DEPARTURE_CHECKNAME" />
+		<result column="END_PLACE" jdbcType="VARCHAR" property="END_PLACE" />
+	</resultMap>
+	<select id="selectAll" resultMap="UserMap">
+		SELECT * FROM kanri
+	</select>
+</mapper>
